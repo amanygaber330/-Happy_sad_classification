@@ -39,11 +39,11 @@ def app():
             # Make predictions on the image with error handling
             try:
                 predictions = model.predict(image_array)
-                threshold = 0.5
-                if predictions[0, 0] <= threshold:
-                    predicted_class_name = 'sad🥺'
-                else:
+                threshold = 1
+                if predictions < threshold:
                     predicted_class_name = 'happy😄'
+                else:
+                    predicted_class_name = 'sad🥺'
             except Exception as e:
                 st.error(f"Error during prediction: {e}")
                 st.stop()
