@@ -39,7 +39,7 @@ def app():
             # Make predictions on the image with error handling
             try:
                 predictions = model.predict(image_array)
-                threshold = 0.5
+                threshold = 1
                 if predictions < threshold:
                     predicted_class_name = 'sad🥺'
                 else:
