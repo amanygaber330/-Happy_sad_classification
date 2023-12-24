@@ -59,7 +59,7 @@ def app():
 
             # Display confidence score
             confidence_score = predictions[0, 0] if predicted_class_name == 'sad🥺' else 1 - predictions[0, 0]
-            st.write(f"Confidence Score: {confidence_score:.2%}")
+            #st.write(f"Confidence Score: {confidence_score:.2%}")
 
 # Run the app
 if __name__ == "__main__":
