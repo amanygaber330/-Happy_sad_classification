@@ -19,15 +19,14 @@ def app():
         layout="wide"
     )
 
-    # Set the app title
-    st.title('Happy😄 or Sad🥺 Classifier')
-
-    # Add a file uploader widget with a centered layout
-    col1, col2 = st.beta_columns(2)
-    with col1:
-        st.write("")  # Empty space for layout
-    with col2:
-        uploaded_file = st.file_uploader("Choose an image", type=["jpg", "jpeg", "png"])
+    # Set the app title with improved styling
+    st.title('Happy 😄 or Sad 🥺 Classifier')
+    
+    # Add a file uploader widget with centered layout
+    uploaded_file = st.file_uploader("Choose an image", type=["jpg", "jpeg", "png"])
+    
+    # Add some space for a cleaner layout
+    st.markdown("---")
 
     # Check if an image has been uploaded
     if uploaded_file is not None:
@@ -56,16 +55,17 @@ def app():
             st.stop()
 
         # Display the image and the predicted class name in a centered layout
-        col1, col2 = st.beta_columns(2)
-        with col1:
-            st.image(image, caption='', use_column_width=True)
+        st.image(image, caption='', use_column_width=True)
 
-        with col2:
-            st.markdown(f'## {predicted_class_name.capitalize()}')
+        # Add some space for a cleaner layout
+        st.markdown("---")
 
-            # Display confidence score
-            confidence_score = predictions[0, 0] if predicted_class_name == 'sad🥺' else 1 - predictions[0, 0]
-            st.write(f"Confidence Score: {confidence_score:.2%}")
+        # Display the predicted class name with improved styling
+        st.markdown(f'## Prediction: {predicted_class_name.capitalize()}')
+
+        # Display confidence score
+        confidence_score = predictions[0, 0] if predicted_class_name == 'sad🥺' else 1 - predictions[0, 0]
+        st.write(f"Confidence Score: {confidence_score:.2%}")
 
 # Run the app
 if __name__ == "__main__":
